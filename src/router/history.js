@@ -1,5 +1,5 @@
-import createHistory from 'history/createBrowserHistory'
+import createBrowserHistory from 'history/createBrowserHistory'
 
-let history = createHistory()
+let history = createBrowserHistory()
 
 export {history}

@@ -25,6 +25,8 @@ var webPackConfig = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+  webPackConfig.entry = webPackConfig.entry.slice(2)
+
   var htmlPluginConfig = {
     filename: 'index.html',
     template: 'index.ejs'
