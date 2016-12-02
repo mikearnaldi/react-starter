@@ -10,5 +10,9 @@ export const linkActions = {
 }
 
 export const linkEpics = (action$, store) => {
-  return action$.ofType(CLICKED).debounce(action => Observable.interval(100)).map(action => action.payload.to).map(to => push(to))
+  return action$
+  .ofType(CLICKED)
+  .debounce(action => Observable.interval(100))
+  .map(action => action.payload.to)
+  .map(to => push(to))
 }

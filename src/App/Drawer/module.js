@@ -1,6 +1,10 @@
+import {Observable} from 'rxjs'
+
 export const OPEN = '@@drawer/OPEN'
 export const CLOSE = '@@drawer/CLOSE'
 export const TOGGLE = '@@drawer/TOGGLE'
+
+export const drawerPath = 'drawer'
 
 export const drawerActions = {
   open: () => ({type: OPEN}),
@@ -14,9 +18,20 @@ export const drawerReducer = (state = {open: false}, {type}) => {
       return {...state, open: true}
     case CLOSE:
       return {...state, open: false}
-    case TOGGLE:
-      return {...state, open: !state.open}
     default:
       return state
   }
+}
+
+export const drawerEpics = (action$, store) => {
+  return action$
+  .ofType(TOGGLE)
+  .debounce(action => Observable.interval(100))
+  .map(action => {
+    if (store.getState().drawer.open) {
+      return drawerActions.close()
+    } else {
+      return drawerActions.open()
+    }
+  })
 }
