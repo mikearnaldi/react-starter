@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StaticRouter as Router } from 'react-router'
 import { connect } from 'react-redux'
 import { push, replace } from './actions'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 function mapStateToProps(state) {
   return {
@@ -24,9 +23,7 @@ const Wrapper = (props, context) => {
       onPush={props.onPush}
       onReplace={props.onReplace}
       >
-      <MuiThemeProvider>
         {props.children}
-      </MuiThemeProvider>
     </Router>
   )
 }

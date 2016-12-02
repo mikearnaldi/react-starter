@@ -1,0 +1,12 @@
+{
+  "env": {
+    "production": {
+      "presets": ["es2015", "stage-0", "react", "react-optimize"],
+      "plugins": ["transform-runtime", "transform-remove-console"]
+    },
+    "development": {
+      "presets": ["es2015", "stage-0", "react"],
+      "plugins": ["react-hot-loader/babel", "transform-export-extensions", "transform-runtime"]
+    }
+  }
+}
