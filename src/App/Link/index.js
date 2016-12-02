@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {push} from '../../router'
+import {linkActions} from './module'
 import FlatButton from 'material-ui/FlatButton'
 
 const MaterialLink = (props) => (
   <FlatButton onTouchTap={() => {
-    props.push(props.to)
+    props.clicked(props.to)
   }}>{props.children}</FlatButton>
 )
 
-export default connect(null, {push: push})(MaterialLink)
+export default connect(null, {clicked: linkActions.clicked})(MaterialLink)

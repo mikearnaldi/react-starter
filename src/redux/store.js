@@ -8,7 +8,7 @@ import epics from './epics'
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : compose;
 const routerMiddleware = createRouterMiddleware(history)
 const epicsMiddleware = createEpicMiddleware(epics)
-const enhancedCreateStore = composeEnhancers(applyMiddleware(routerMiddleware), applyMiddleware(epicsMiddleware))(createStore)
+const enhancedCreateStore = composeEnhancers(applyMiddleware(epicsMiddleware), applyMiddleware(routerMiddleware))(createStore)
 
 let store = enhancedCreateStore(reducers)
 
