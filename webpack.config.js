@@ -25,6 +25,15 @@ var webPackConfig = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+  var htmlPluginConfig = {
+    filename: 'index.html',
+    template: 'index.ejs'
+  };
+
+  for(var field in config.html) {
+    htmlPluginConfig[field] = config.html[field]
+  }
+
   webPackConfig.plugins = [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
@@ -38,15 +47,20 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
-    new HtmlWebpackPlugin({
-      title: config.title,
-      filename: 'index.html',
-      template: 'index.ejs'
-    })
+    new HtmlWebpackPlugin(htmlPluginConfig)
   ];
 }
 
 if (process.env.NODE_ENV === 'development') {
+  var htmlPluginConfig = {
+    filename: 'index.html',
+    template: 'index.ejs'
+  };
+
+  for(var field in config.html) {
+    htmlPluginConfig[field] = config.html[field]
+  }
+
   webPackConfig.plugins = [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -54,11 +68,7 @@ if (process.env.NODE_ENV === 'development') {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
-    new HtmlWebpackPlugin({
-      title: config.title,
-      filename: 'index.html',
-      template: 'index.ejs'
-    })
+    new HtmlWebpackPlugin(htmlPluginConfig)
   ];
 }
 
