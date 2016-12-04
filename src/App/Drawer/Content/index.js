@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 
 const Head = styled.div`
   height: 178px;
-  background-color: ${colors.lightBlue};
+  background-color: ${colors.materialBlueGrey['400']};
   display: flex;
 `
 
@@ -21,8 +21,8 @@ const IconBox = styled.div`
   & > i {
     margin: auto;
     font-size: 50px;
-    color: ${colors.buttonGrey};
-    border: 1px solid ${colors.buttonGrey};
+    color: ${colors.materialBlueGrey['800']};
+    border: 1px solid ${colors.materialBlueGrey['800']};
     border-radius: 56px;
     padding-bottom: 6px;
     padding-left: 3px;
@@ -35,7 +35,7 @@ const NameBox = styled.div`
   display: flex;
 
   & > span {
-    color: ${colors.textWhite}
+    color: ${colors.materialBlueGrey['900']}
     margin: auto;
   }
 `

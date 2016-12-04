@@ -1,11 +1,11 @@
 import React from 'react'
 import { Match } from 'react-router'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Link from './Link'
 import Drawer from './Drawer'
 import * as colors from './styles/colors'
 import Header from './Header'
 import Body from './Body'
+import One from './Body/One'
 
 import styled from 'styled-components'
 
@@ -29,17 +29,15 @@ const Footer = styled.div`
 
 const Entry = (props, context) => {
   return (
-    <MuiThemeProvider>
-      <Container>
-        <Header />
-        <Body>
-          <Match pattern={'/'} exactly render={() => <div>OK 1 <Link to={'/two'}>Two</Link></div>} />
-          <Match pattern={'/two'} exactly render={() => <div>OK 2 <Link to={'/'}>One</Link></div>} />
-        </Body>
-        <Drawer />
-        <Footer>Copyright &copy; 2016-2017 Michael Arnaldi</Footer>
-      </Container>
-    </MuiThemeProvider>
+    <Container>
+      <Header />
+      <Body>
+        <Match pattern={'/'} exactly render={One} />
+        <Match pattern={'/two'} exactly render={() => <div>OK 2 <Link to={'/'}>One</Link></div>} />
+      </Body>
+      <Drawer clickOutside />
+      <Footer>Copyright &copy; 2016-2017 Michael Arnaldi</Footer>
+    </Container>
   )
 }
 

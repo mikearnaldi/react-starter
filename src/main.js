@@ -7,11 +7,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import store from './redux/store'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import App from './App'
 import Wrapper from './router/wrapper'
-
-injectTapEventPlugin()
 
 const MOUNT_NODE = document.getElementById('root')
 

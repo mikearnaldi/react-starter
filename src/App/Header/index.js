@@ -6,18 +6,19 @@ import {drawerActions} from '../Drawer/module.js'
 import {Motion, spring} from 'react-motion'
 import Icon from '../Icon'
 import TitleContent from './Title'
+import {choose} from '../../helpers'
 
 const HeaderWrapper = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid ${colors.borderGrey};
-  background-color: ${colors.lightBlue};
+  border-bottom: 1px solid ${colors.materialBlueGrey['50']};
+  background-color: ${colors.materialBlueGrey['400']};
 `
 
 const TitleWrapper = styled.div`
-  color: ${colors.textWhite}
+  color: ${colors.materialBlueGrey['900']}
   display: inline-block;
   font-size: 20px;
   margin-left: 5px;
@@ -34,11 +35,11 @@ const getIcon = (drawerState, rotation) => {
 
 const Header = ({drawerToggle, drawerState}) => (
   <HeaderWrapper>
-    <Motion defaultStyle={{x: 5, y: 0}} style={{x: spring(drawerState ? 305 : 5), y: spring(drawerState ? 90 : 0)}}>
+    <Motion defaultStyle={{x: 5, y: 0}} style={{x: spring(drawerState ? 305 : 5, {stiffness: 150, damping: 30}), y: spring(drawerState ? 90 : 0, {stiffness: 150, damping: 30})}}>
       {(value) => (
         <Icon
-          style={{marginTop: '7px', marginLeft: `${value.x}px`}}
-          innserStyle={{transform: `rotate(${value.y}deg)`, color: colors.buttonGrey}}
+          style={{marginTop: '7px', marginLeft: `${choose(value.x, 5)}px`}}
+          innserStyle={{transform: `rotate(${choose(value.y, 0)}deg)`, color: colors.materialBlueGrey['800']}}
           onClick={() => {drawerToggle()}}>
           {getIcon(drawerState, value.y)}
         </Icon>
