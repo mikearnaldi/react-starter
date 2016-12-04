@@ -1,11 +1,9 @@
 import React from 'react'
-import { Match } from 'react-router'
 import Link from './Link'
 import Drawer from './Drawer'
 import * as colors from './styles/colors'
 import Header from './Header'
 import Body from './Body'
-import One from './Body/One'
 
 import styled from 'styled-components'
 
@@ -31,11 +29,8 @@ const Entry = (props, context) => {
   return (
     <Container>
       <Header />
-      <Body>
-        <Match pattern={'/'} exactly render={One} />
-        <Match pattern={'/two'} exactly render={() => <div>OK 2 <Link to={'/'}>One</Link></div>} />
-      </Body>
-      <Drawer clickOutside />
+      <Body />
+      <Drawer />
       <Footer>Copyright &copy; 2016-2017 Michael Arnaldi</Footer>
     </Container>
   )

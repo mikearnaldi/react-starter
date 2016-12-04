@@ -3,6 +3,7 @@ import {Motion, spring} from 'react-motion'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 import {choose} from '../../helpers'
+import Content from './Content'
 
 const Body = styled.div`
   position: relative;
@@ -14,7 +15,9 @@ const Body = styled.div`
 
 const BodyWrapper = ({children, drawerState}) => (
   <Motion defaultStyle={{x: 0}} style={{x: spring(drawerState ? 301 : 0, {stiffness: 150, damping: 30})}}>
-    {(value => <Body style={{left: `${choose(value.x, 0)}px`, width: `calc(100% - ${choose(value.x, 0)}px)`}}>{children}</Body>)}
+    {(value => <Body style={{left: `${choose(value.x, 0)}px`, width: `calc(100% - ${choose(value.x, 0)}px)`}}>
+      <Content />
+    </Body>)}
   </Motion>
 )
 

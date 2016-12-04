@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from '../../Link'
+import Link from '../../../Link'
 
 export const Button = ({children}) => {
   return (
@@ -7,10 +7,10 @@ export const Button = ({children}) => {
   )
 }
 
-export const One = () => {
+export const Two = () => {
   return (
-    <div>OKOKOKOK: <Link to={'/two'}>page_2</Link></div>
+    <div>Page TWO -- link to: <Link to={'/'}>page 1</Link></div>
   )
 }
 
-export default One
+export default Two

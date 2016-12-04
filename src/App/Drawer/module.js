@@ -28,7 +28,7 @@ export const drawerEpics = (action$, store) => {
   .ofType(TOGGLE)
   .debounce(action => Observable.interval(100))
   .map(action => {
-    if (store.getState().drawer.open) {
+    if (store.getState()[drawerPath].open) {
       return drawerActions.close()
     } else {
       return drawerActions.open()
